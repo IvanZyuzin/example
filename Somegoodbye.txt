@@ -1,2 +1,3 @@
 Hello? combo;
-How are you
+How are you;
+What do you do
