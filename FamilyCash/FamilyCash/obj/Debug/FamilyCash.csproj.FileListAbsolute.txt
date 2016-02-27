@@ -1,7 +1,6 @@
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\FamilyCash.exe.config
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\FamilyCash.exe
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\FamilyCash.pdb
-C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.csprojResolveAssemblyReference.cache
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.Properties.Resources.resources
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.csproj.GenerateResource.Cache
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.exe
@@ -12,3 +11,6 @@ C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\EntityFramework.xml
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.Form1.resources
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.FormExp.resources
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.FormProf.resources
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.csprojResolveAssemblyReference.cache
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.FormRev.resources

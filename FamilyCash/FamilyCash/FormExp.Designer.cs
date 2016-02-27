@@ -118,9 +118,9 @@
             // btnAddEditExp
             // 
             this.btnAddEditExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddEditExp.Location = new System.Drawing.Point(75, 264);
+            this.btnAddEditExp.Location = new System.Drawing.Point(55, 264);
             this.btnAddEditExp.Name = "btnAddEditExp";
-            this.btnAddEditExp.Size = new System.Drawing.Size(103, 34);
+            this.btnAddEditExp.Size = new System.Drawing.Size(123, 34);
             this.btnAddEditExp.TabIndex = 48;
             this.btnAddEditExp.Text = "Добавить";
             this.btnAddEditExp.UseVisualStyleBackColor = true;
@@ -150,6 +150,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormExp";
             this.Text = "FormExp";
             this.ResumeLayout(false);

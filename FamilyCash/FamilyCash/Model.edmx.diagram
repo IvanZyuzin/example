@@ -7,10 +7,10 @@
       <Diagram DiagramId="205c12fe2ce846319a3a2c4fdf592b9e" Name="Diagram1" ZoomLevel="112" >
         <EntityTypeShape EntityType="Model.Expence" Width="1.5" PointX="1.25" PointY="2.875" />
         <EntityTypeShape EntityType="Model.Person" Width="1.5" PointX="3" PointY="2.875" />
-        <EntityTypeShape EntityType="Model.Profit" Width="1.5" PointX="4.875" PointY="2.875" />
+        <EntityTypeShape EntityType="Model.Profit" Width="1.5" PointX="5" PointY="2.625" />
         <EntityTypeShape EntityType="Model.TypeExpence" Width="1.5" PointX="1.25" PointY="5.5" />
         <EntityTypeShape EntityType="Model.TypeRevenue" Width="1.5" PointX="3" PointY="4.875" />
-        <EntityTypeShape EntityType="Model.Revenue" Width="1.5" PointX="4.875" PointY="5" />
+        <EntityTypeShape EntityType="Model.Revenue" Width="1.5" PointX="4.75" PointY="5.125" />
         <AssociationConnector Association="Model.TypeExpenceExpence" />
         <AssociationConnector Association="Model.TypeRevenueRevenue" />
         <AssociationConnector Association="Model.PersonRevenue" />

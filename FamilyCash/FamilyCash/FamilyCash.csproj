@@ -72,6 +72,18 @@
     <Compile Include="FormExp.Designer.cs">
       <DependentUpon>FormExp.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProf.Designer.cs">
+      <DependentUpon>FormProf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRev.Designer.cs">
+      <DependentUpon>FormRev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,6 +124,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormExp.resx">
       <DependentUpon>FormExp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProf.resx">
+      <DependentUpon>FormProf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRev.resx">
+      <DependentUpon>FormRev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

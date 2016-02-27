@@ -22,6 +22,7 @@ namespace FamilyCash
             this.AddOrEdit = AddOrEdit;
             this.Number = Number;
             InitializeComponent();
+            btnCancel.Click += (sender, args) => { Close(); };
             ShowTypeExpence();
 
             if (AddOrEdit)
@@ -52,6 +53,7 @@ namespace FamilyCash
             using (ModelContainer db = new ModelContainer())
             {
                 comboTypeExp.Items.AddRange(db.TypeExpenceSet.AsNoTracking().Select(x => x.TypeExpDescription).ToArray());
+                comboTypeExp.SelectedIndex = 0;
             }
         }
 
