@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ExpenceSet" EntityType="Model.Expence" />
+    <EntitySet Name="PersonSet" EntityType="Model.Person" />
+    <EntitySet Name="ProfitSet" EntityType="Model.Profit" />
+    <EntitySet Name="TypeExpenceSet" EntityType="Model.TypeExpence" />
+    <EntitySet Name="TypeRevenueSet" EntityType="Model.TypeRevenue" />
+    <EntitySet Name="RevenueSet" EntityType="Model.Revenue" />
+    <AssociationSet Name="TypeExpenceExpence" Association="Model.TypeExpenceExpence">
+      <End Role="TypeExpence" EntitySet="TypeExpenceSet" />
+      <End Role="Expence" EntitySet="ExpenceSet" />
+    </AssociationSet>
+    <AssociationSet Name="TypeRevenueRevenue" Association="Model.TypeRevenueRevenue">
+      <End Role="TypeRevenue" EntitySet="TypeRevenueSet" />
+      <End Role="Revenue" EntitySet="RevenueSet" />
+    </AssociationSet>
+    <AssociationSet Name="PersonRevenue" Association="Model.PersonRevenue">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="Revenue" EntitySet="RevenueSet" />
+    </AssociationSet>
+    <AssociationSet Name="PersonProfit" Association="Model.PersonProfit">
+      <End Role="Person" EntitySet="PersonSet" />
+      <End Role="Profit" EntitySet="ProfitSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Expence">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExpDate" Type="DateTime" Nullable="false" />
+    <Property Name="ExpDescription" Type="String" Nullable="false" />
+    <Property Name="Summa" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="TypeExpences" Relationship="Model.TypeExpenceExpence" FromRole="Expence" ToRole="TypeExpence" />
+    <Property Name="TypeExpenceId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" />
+    <Property Name="SecondName" Type="String" Nullable="false" />
+    <NavigationProperty Name="Revenue_Person" Relationship="Model.PersonRevenue" FromRole="Person" ToRole="Revenue" />
+    <NavigationProperty Name="Profits" Relationship="Model.PersonProfit" FromRole="Person" ToRole="Profit" />
+  </EntityType>
+  <EntityType Name="Profit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfDate" Type="DateTime" Nullable="false" />
+    <Property Name="ProfDescription" Type="String" Nullable="false" />
+    <Property Name="SumEntrance" Type="Decimal" Nullable="false" />
+    <Property Name="SumAdded" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="Persons" Relationship="Model.PersonProfit" FromRole="Profit" ToRole="Person" />
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeExpence">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeExpDescription" Type="String" Nullable="false" />
+    <NavigationProperty Name="Expences" Relationship="Model.TypeExpenceExpence" FromRole="TypeExpence" ToRole="Expence" />
+  </EntityType>
+  <EntityType Name="TypeRevenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeRevDescription" Type="String" Nullable="false" />
+    <NavigationProperty Name="Revenues" Relationship="Model.TypeRevenueRevenue" FromRole="TypeRevenue" ToRole="Revenue" />
+  </EntityType>
+  <EntityType Name="Revenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RevDate" Type="DateTime" Nullable="false" />
+    <Property Name="RevDescription" Type="String" Nullable="false" />
+    <Property Name="RevSum" Type="Decimal" Nullable="false" />
+    <Property Name="RevProcent" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="TypeRevenues" Relationship="Model.TypeRevenueRevenue" FromRole="Revenue" ToRole="TypeRevenue" />
+    <Property Name="TypeRevenueId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Person_Revenue" Relationship="Model.PersonRevenue" FromRole="Revenue" ToRole="Person" />
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="TypeExpenceExpence">
+    <End Type="Model.TypeExpence" Role="TypeExpence" Multiplicity="1" />
+    <End Type="Model.Expence" Role="Expence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeExpence">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Expence">
+        <PropertyRef Name="TypeExpenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TypeRevenueRevenue">
+    <End Type="Model.TypeRevenue" Role="TypeRevenue" Multiplicity="1" />
+    <End Type="Model.Revenue" Role="Revenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeRevenue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Revenue">
+        <PropertyRef Name="TypeRevenueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonRevenue">
+    <End Type="Model.Person" Role="Person" Multiplicity="1" />
+    <End Type="Model.Revenue" Role="Revenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Revenue">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonProfit">
+    <End Type="Model.Person" Role="Person" Multiplicity="1" />
+    <End Type="Model.Profit" Role="Profit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Profit">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

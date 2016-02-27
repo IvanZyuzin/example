@@ -1,0 +1,8 @@
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\FamilyCash.exe.config
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\FamilyCash.exe
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\FamilyCash.pdb
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.csprojResolveAssemblyReference.cache
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.Properties.Resources.resources
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.csproj.GenerateResource.Cache
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.exe
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.pdb
