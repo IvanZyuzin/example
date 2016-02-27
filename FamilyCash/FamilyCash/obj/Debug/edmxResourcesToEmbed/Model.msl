@@ -1,6 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-  <Alias Key="Model" Value="Model" />
-  <Alias Key="Target" Value="Model.Store" />
-  <EntityContainerMapping CdmEntityContainer="ModelContainer" StorageEntityContainer="ModelTargetContainer" />
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="ExpenceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Expence)">
+        <MappingFragment StoreEntitySet="ExpenceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+          <ScalarProperty Name="ExpDescription" ColumnName="ExpDescription" />
+          <ScalarProperty Name="Summa" ColumnName="Summa" />
+          <ScalarProperty Name="TypeExpenceId" ColumnName="TypeExpenceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Person)">
+        <MappingFragment StoreEntitySet="PersonSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfitSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Profit)">
+        <MappingFragment StoreEntitySet="ProfitSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProfDate" ColumnName="ProfDate" />
+          <ScalarProperty Name="ProfDescription" ColumnName="ProfDescription" />
+          <ScalarProperty Name="SumEntrance" ColumnName="SumEntrance" />
+          <ScalarProperty Name="SumAdded" ColumnName="SumAdded" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeExpenceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.TypeExpence)">
+        <MappingFragment StoreEntitySet="TypeExpenceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeExpDescription" ColumnName="TypeExpDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeRevenueSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.TypeRevenue)">
+        <MappingFragment StoreEntitySet="TypeRevenueSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeRevDescription" ColumnName="TypeRevDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RevenueSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Revenue)">
+        <MappingFragment StoreEntitySet="RevenueSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RevDate" ColumnName="RevDate" />
+          <ScalarProperty Name="RevDescription" ColumnName="RevDescription" />
+          <ScalarProperty Name="RevSum" ColumnName="RevSum" />
+          <ScalarProperty Name="RevProcent" ColumnName="RevProcent" />
+          <ScalarProperty Name="TypeRevenueId" ColumnName="TypeRevenueId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
 </Mapping>
