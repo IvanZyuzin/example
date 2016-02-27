@@ -10,3 +10,5 @@ C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\EntityFramework.dll
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\EntityFramework.xml
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.Form1.resources
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.FormExp.resources
