@@ -17,8 +17,8 @@ namespace FamilyCash
         public int Id { get; set; }
         public System.DateTime ProfDate { get; set; }
         public string ProfDescription { get; set; }
-        public decimal SumEntrance { get; set; }
-        public decimal SumAdded { get; set; }
+        public Nullable<decimal> SumEntrance { get; set; }
+        public Nullable<decimal> SumAdded { get; set; }
         public int PersonId { get; set; }
     
         public virtual Person Persons { get; set; }

@@ -31,7 +31,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ExpDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ExpDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="Summa" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="Summa" Type="Decimal" Precision="10" Scale="2" Nullable="true" />
     <NavigationProperty Name="TypeExpences" Relationship="Model.TypeExpenceExpence" FromRole="Expence" ToRole="TypeExpence" />
     <Property Name="TypeExpenceId" Type="Int32" Nullable="false" />
   </EntityType>
@@ -52,8 +52,8 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProfDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ProfDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="SumEntrance" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="SumAdded" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="SumEntrance" Type="Decimal" Precision="10" Scale="2" Nullable="true" />
+    <Property Name="SumAdded" Type="Decimal" Precision="10" Scale="2" Nullable="true" />
     <NavigationProperty Name="Persons" Relationship="Model.PersonProfit" FromRole="Profit" ToRole="Person" />
     <Property Name="PersonId" Type="Int32" Nullable="false" />
   </EntityType>

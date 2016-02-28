@@ -7,7 +7,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ExpDate" Type="datetime" Nullable="false" />
     <Property Name="ExpDescription" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Summa" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Summa" Type="decimal" Precision="10" Scale="2" />
     <Property Name="TypeExpenceId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PersonSet">
@@ -25,8 +25,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProfDate" Type="datetime" Nullable="false" />
     <Property Name="ProfDescription" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SumEntrance" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-    <Property Name="SumAdded" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="SumEntrance" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="SumAdded" Type="decimal" Precision="10" Scale="2" />
     <Property Name="PersonId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RevenueSet">

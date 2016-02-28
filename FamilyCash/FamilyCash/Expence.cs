@@ -17,7 +17,7 @@ namespace FamilyCash
         public int Id { get; set; }
         public System.DateTime ExpDate { get; set; }
         public string ExpDescription { get; set; }
-        public decimal Summa { get; set; }
+        public Nullable<decimal> Summa { get; set; }
         public int TypeExpenceId { get; set; }
     
         public virtual TypeExpence TypeExpences { get; set; }

@@ -29,12 +29,38 @@ namespace FamilyCash
             fiillexpprofToolStripMenu.Click += (sender, args) =>
             {
                 tabControl.SelectedIndex = 3;
-                chart1.FillExpProf(2);
+                chart1.FillExpProfByMonths(2);
             };
 
+            filltypeExpToolStripMenu.Click += (sender, args) =>
+              {
+                  tabControl.SelectedIndex = 3;
+                  chart1.FillTypeExpencesByMonths(2);
+              };
+            fillprofpersonToolStripMenu.Click += (sender, args) =>
+             {
+                 tabControl.SelectedIndex = 3;
+                 chart1.ProfitByPersonByMonth("Николай", 3);
+             };
+            fillproffamilyToolStripMenu.Click += (sender, args) =>
+            {
+                tabControl.SelectedIndex = 3;
+                chart1.ProfitByFamilyByMonths(2);
+            };
+            
+            fiilprofitfamilyToolStripMenu.Click += (sender, args) =>
+            {
+                tabControl.SelectedIndex = 3;
+                chart1.FillProfitByMonth(2);
+            };
+            expbyonetypeToolStripMenu.Click += (sender, args) =>
+            {
+                tabControl.SelectedIndex = 3;
+                chart1.ExpByTypeByMonth(2, 5);
+            };
 
             tabControl.Selecting += UpdateData;
-            this.Activated += UpdateData;
+            Activated += UpdateData;
         }
 
         public void UpdateData(object sender, EventArgs args)
