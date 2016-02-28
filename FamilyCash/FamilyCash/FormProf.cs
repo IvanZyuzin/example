@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -109,6 +110,7 @@ namespace FamilyCash
                     profit.SumEntrance = SumEntr;
                     profit.SumAdded = SumAdd;
                     profit.Persons.Id = comboPerson.SelectedIndex + 1;
+                    db.Entry(profit).State = EntityState.Modified;
                     db.SaveChanges();
                 }
             }

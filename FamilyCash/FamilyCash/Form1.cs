@@ -14,43 +14,49 @@ namespace FamilyCash
     {
         private string[] headers_expence = { "№", "Дата приобретения", "Описание", "Тип расходов", "Сумма покупки" };
         private string[] headers_profit = { "№", "Дата поступления", "Описание", "Начислено", "Получено", "Член семьи" };
+        private string[] headers_revenue = { "№", "Дата", "Тип дохода", "Сумма", "Работник" };
 
         public Form1()
         {
             InitializeComponent();
             timer1.Start();
-            timer1.Tick += TimerMoving;
-            expencesToolStripMenu.Click += ExpencesToolStripMenu_Click;
-            profitToolStripMenu.Click += ProfitToolStripMenu_Click;
-            revenueToolStripMenu.Click += RevenueToolStripMenu_Click;
+            timer1.Tick += (sender, args) => { timerStrip.Text = string.Format("Сегодня: {0}", DateTime.Now.ToString()); };
+            expencesToolStripMenu.Click += (sender, args) => { tabControl.SelectedIndex = 0; };
+            profitToolStripMenu.Click += (sender, args) => { tabControl.SelectedIndex = 1; };
+            revenueToolStripMenu.Click += (sender, args) => { tabControl.SelectedIndex = 2; };
 
-            /*
-            ShowExpences();
-            ShowProfits();
-            */
+
+            fiillexpprofToolStripMenu.Click += (sender, args) =>
+            {
+                tabControl.SelectedIndex = 3;
+                chart1.FillExpProf(2);
+            };
+
+
+            tabControl.Selecting += UpdateData;
+            this.Activated += UpdateData;
         }
 
-        private void ExpencesToolStripMenu_Click(object sender, EventArgs e)
+        public void UpdateData(object sender, EventArgs args)
         {
-            tabControl.SelectedIndex = 0;
+            switch(tabControl.SelectedIndex)
+            {
+                case 0:
+                    data1.DataSource = null;
+                    ShowExpences();
+                    break;
+                case 1:
+                    data1.DataSource = null;
+                    ShowProfits();
+                    break;
+                case 2:
+                    data1.DataSource = null;
+                    ShowRevenues();
+                    break;
+            }
         }
 
-        private void ProfitToolStripMenu_Click(object sender, EventArgs e)
-        {
-            tabControl.SelectedIndex = 1;
-        }
-
-        private void RevenueToolStripMenu_Click(object sender, EventArgs e)
-        {
-            tabControl.SelectedIndex = 2;
-        }
-
-        private void TimerMoving(object sender, EventArgs args)
-        {
-            timerStrip.Text = string.Format("Сегодня: {0}", DateTime.Now.ToString());
-        }
-
-        private void ShowExpences()
+        public void ShowExpences()
         {
             using (ModelContainer db = new ModelContainer())
             {
@@ -62,7 +68,7 @@ namespace FamilyCash
             }
         }
 
-        private void ShowProfits()
+        public void ShowProfits()
         {
             using (ModelContainer db = new ModelContainer())
             {
@@ -70,6 +76,18 @@ namespace FamilyCash
                 for (int i = 0; i < headers_profit.Length; i++)
                 {
                     data2.Columns[i].HeaderText = headers_profit[i];
+                }
+            }
+        }
+
+        public void ShowRevenues()
+        {
+            using (ModelContainer db = new ModelContainer())
+            {
+                data3.DataSource = db.RevenueSet.AsNoTracking().Select(x => new { x.Id, x.RevDate, x.TypeRevenues.TypeRevDescription, x.RevSum, x.Person_Revenue.FirstName }).ToList();
+                for (int i = 0; i < headers_revenue.Length; i++)
+                {
+                    data3.Columns[i].HeaderText = headers_revenue[i];
                 }
             }
         }
@@ -201,14 +219,6 @@ namespace FamilyCash
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void Form1_Activated(object sender, EventArgs e)
-        {
-            data1.DataSource = null;
-            data2.DataSource = null;
-            ShowExpences();
-            ShowProfits();
         }
     }
 }

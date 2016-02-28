@@ -54,9 +54,7 @@
         <MappingFragment StoreEntitySet="RevenueSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="RevDate" ColumnName="RevDate" />
-          <ScalarProperty Name="RevDescription" ColumnName="RevDescription" />
           <ScalarProperty Name="RevSum" ColumnName="RevSum" />
-          <ScalarProperty Name="RevProcent" ColumnName="RevProcent" />
           <ScalarProperty Name="TypeRevenueId" ColumnName="TypeRevenueId" />
           <ScalarProperty Name="PersonId" ColumnName="PersonId" />
         </MappingFragment>

@@ -72,8 +72,8 @@ namespace FamilyCash
                 {
                     Revenue rev = new Revenue();
                     rev.RevDate = dateRev.Value;
-                    rev.TypeRevenueId = comboTypeRev.SelectedIndex + 1;
                     rev.RevSum = Summa;
+                    rev.TypeRevenueId = comboTypeRev.SelectedIndex + 1;
                     rev.PersonId = comboWorker.SelectedIndex + 3;
                     db.RevenueSet.Add(rev);
                     db.SaveChanges();

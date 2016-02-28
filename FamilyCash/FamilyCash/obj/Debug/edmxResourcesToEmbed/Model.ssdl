@@ -1,29 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="ModelStoreContainer">
-    <EntitySet Name="ExpenceSet" EntityType="Model.Store.ExpenceSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PersonSet" EntityType="Model.Store.PersonSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ProfitSet" EntityType="Model.Store.ProfitSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TypeExpenceSet" EntityType="Model.Store.TypeExpenceSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TypeRevenueSet" EntityType="Model.Store.TypeRevenueSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="RevenueSet" EntityType="Model.Store.RevenueSet" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="TypeExpenceExpence" Association="Model.Store.TypeExpenceExpence">
-      <End Role="TypeExpence" EntitySet="TypeExpenceSet" />
-      <End Role="Expence" EntitySet="ExpenceSet" />
-    </AssociationSet>
-    <AssociationSet Name="TypeRevenueRevenue" Association="Model.Store.TypeRevenueRevenue">
-      <End Role="TypeRevenue" EntitySet="TypeRevenueSet" />
-      <End Role="Revenue" EntitySet="RevenueSet" />
-    </AssociationSet>
-    <AssociationSet Name="PersonRevenue" Association="Model.Store.PersonRevenue">
-      <End Role="Person" EntitySet="PersonSet" />
-      <End Role="Revenue" EntitySet="RevenueSet" />
-    </AssociationSet>
-    <AssociationSet Name="PersonProfit" Association="Model.Store.PersonProfit">
-      <End Role="Person" EntitySet="PersonSet" />
-      <End Role="Profit" EntitySet="ProfitSet" />
-    </AssociationSet>
-  </EntityContainer>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="ExpenceSet">
     <Key>
       <PropertyRef Name="Id" />
@@ -31,7 +7,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ExpDate" Type="datetime" Nullable="false" />
     <Property Name="ExpDescription" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Summa" Type="decimal" Nullable="false" />
+    <Property Name="Summa" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="TypeExpenceId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PersonSet">
@@ -49,8 +25,18 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProfDate" Type="datetime" Nullable="false" />
     <Property Name="ProfDescription" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SumEntrance" Type="decimal" Nullable="false" />
-    <Property Name="SumAdded" Type="decimal" Nullable="false" />
+    <Property Name="SumEntrance" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="SumAdded" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="PersonId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RevenueSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RevDate" Type="datetime" Nullable="false" />
+    <Property Name="RevSum" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="TypeRevenueId" Type="int" Nullable="false" />
     <Property Name="PersonId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TypeExpenceSet">
@@ -67,64 +53,76 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TypeRevDescription" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="RevenueSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RevDate" Type="datetime" Nullable="false" />
-    <Property Name="RevDescription" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RevSum" Type="decimal" Nullable="false" />
-    <Property Name="RevProcent" Type="decimal" Nullable="false" />
-    <Property Name="TypeRevenueId" Type="int" Nullable="false" />
-    <Property Name="PersonId" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="TypeExpenceExpence">
-    <End Role="TypeExpence" Type="Model.Store.TypeExpenceSet" Multiplicity="1" />
-    <End Role="Expence" Type="Model.Store.ExpenceSet" Multiplicity="*" />
+  <Association Name="FK_PersonProfit">
+    <End Role="PersonSet" Type="Self.PersonSet" Multiplicity="1" />
+    <End Role="ProfitSet" Type="Self.ProfitSet" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TypeExpence">
+      <Principal Role="PersonSet">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Expence">
+      <Dependent Role="ProfitSet">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonRevenue">
+    <End Role="PersonSet" Type="Self.PersonSet" Multiplicity="1" />
+    <End Role="RevenueSet" Type="Self.RevenueSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RevenueSet">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TypeExpenceExpence">
+    <End Role="TypeExpenceSet" Type="Self.TypeExpenceSet" Multiplicity="1" />
+    <End Role="ExpenceSet" Type="Self.ExpenceSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeExpenceSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExpenceSet">
         <PropertyRef Name="TypeExpenceId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="TypeRevenueRevenue">
-    <End Role="TypeRevenue" Type="Model.Store.TypeRevenueSet" Multiplicity="1" />
-    <End Role="Revenue" Type="Model.Store.RevenueSet" Multiplicity="*" />
+  <Association Name="FK_TypeRevenueRevenue">
+    <End Role="TypeRevenueSet" Type="Self.TypeRevenueSet" Multiplicity="1" />
+    <End Role="RevenueSet" Type="Self.RevenueSet" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TypeRevenue">
+      <Principal Role="TypeRevenueSet">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Revenue">
+      <Dependent Role="RevenueSet">
         <PropertyRef Name="TypeRevenueId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="PersonRevenue">
-    <End Role="Person" Type="Model.Store.PersonSet" Multiplicity="1" />
-    <End Role="Revenue" Type="Model.Store.RevenueSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Person">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Revenue">
-        <PropertyRef Name="PersonId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PersonProfit">
-    <End Role="Person" Type="Model.Store.PersonSet" Multiplicity="1" />
-    <End Role="Profit" Type="Model.Store.ProfitSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Person">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Profit">
-        <PropertyRef Name="PersonId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="ExpenceSet" EntityType="Self.ExpenceSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonSet" EntityType="Self.PersonSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfitSet" EntityType="Self.ProfitSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RevenueSet" EntityType="Self.RevenueSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeExpenceSet" EntityType="Self.TypeExpenceSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeRevenueSet" EntityType="Self.TypeRevenueSet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PersonProfit" Association="Self.FK_PersonProfit">
+      <End Role="PersonSet" EntitySet="PersonSet" />
+      <End Role="ProfitSet" EntitySet="ProfitSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonRevenue" Association="Self.FK_PersonRevenue">
+      <End Role="PersonSet" EntitySet="PersonSet" />
+      <End Role="RevenueSet" EntitySet="RevenueSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TypeExpenceExpence" Association="Self.FK_TypeExpenceExpence">
+      <End Role="TypeExpenceSet" EntitySet="TypeExpenceSet" />
+      <End Role="ExpenceSet" EntitySet="ExpenceSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TypeRevenueRevenue" Association="Self.FK_TypeRevenueRevenue">
+      <End Role="TypeRevenueSet" EntitySet="TypeRevenueSet" />
+      <End Role="RevenueSet" EntitySet="RevenueSet" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

@@ -29,9 +29,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ExpDate" Type="DateTime" Nullable="false" />
-    <Property Name="ExpDescription" Type="String" Nullable="false" />
-    <Property Name="Summa" Type="Decimal" Nullable="false" />
+    <Property Name="ExpDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Summa" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
     <NavigationProperty Name="TypeExpences" Relationship="Model.TypeExpenceExpence" FromRole="Expence" ToRole="TypeExpence" />
     <Property Name="TypeExpenceId" Type="Int32" Nullable="false" />
   </EntityType>
@@ -40,8 +40,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FirstName" Type="String" Nullable="false" />
-    <Property Name="SecondName" Type="String" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SecondName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Revenue_Person" Relationship="Model.PersonRevenue" FromRole="Person" ToRole="Revenue" />
     <NavigationProperty Name="Profits" Relationship="Model.PersonProfit" FromRole="Person" ToRole="Profit" />
   </EntityType>
@@ -50,10 +50,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProfDate" Type="DateTime" Nullable="false" />
-    <Property Name="ProfDescription" Type="String" Nullable="false" />
-    <Property Name="SumEntrance" Type="Decimal" Nullable="false" />
-    <Property Name="SumAdded" Type="Decimal" Nullable="false" />
+    <Property Name="ProfDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProfDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SumEntrance" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="SumAdded" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
     <NavigationProperty Name="Persons" Relationship="Model.PersonProfit" FromRole="Profit" ToRole="Person" />
     <Property Name="PersonId" Type="Int32" Nullable="false" />
   </EntityType>
@@ -62,7 +62,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TypeExpDescription" Type="String" Nullable="false" />
+    <Property Name="TypeExpDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Expences" Relationship="Model.TypeExpenceExpence" FromRole="TypeExpence" ToRole="Expence" />
   </EntityType>
   <EntityType Name="TypeRevenue">
@@ -70,7 +70,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TypeRevDescription" Type="String" Nullable="false" />
+    <Property Name="TypeRevDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Revenues" Relationship="Model.TypeRevenueRevenue" FromRole="TypeRevenue" ToRole="Revenue" />
   </EntityType>
   <EntityType Name="Revenue">
@@ -78,10 +78,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RevDate" Type="DateTime" Nullable="false" />
-    <Property Name="RevDescription" Type="String" Nullable="false" />
-    <Property Name="RevSum" Type="Decimal" Nullable="false" />
-    <Property Name="RevProcent" Type="Decimal" Nullable="false" />
+    <Property Name="RevDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RevSum" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
     <NavigationProperty Name="TypeRevenues" Relationship="Model.TypeRevenueRevenue" FromRole="Revenue" ToRole="TypeRevenue" />
     <Property Name="TypeRevenueId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Person_Revenue" Relationship="Model.PersonRevenue" FromRole="Revenue" ToRole="Person" />

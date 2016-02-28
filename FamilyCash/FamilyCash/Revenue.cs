@@ -16,9 +16,7 @@ namespace FamilyCash
     {
         public int Id { get; set; }
         public System.DateTime RevDate { get; set; }
-        public string RevDescription { get; set; }
         public decimal RevSum { get; set; }
-        public decimal RevProcent { get; set; }
         public int TypeRevenueId { get; set; }
         public int PersonId { get; set; }
     

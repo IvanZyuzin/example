@@ -44,7 +44,7 @@
             // 
             this.comboWorker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboWorker.FormattingEnabled = true;
-            this.comboWorker.Location = new System.Drawing.Point(118, 114);
+            this.comboWorker.Location = new System.Drawing.Point(118, 109);
             this.comboWorker.Name = "comboWorker";
             this.comboWorker.Size = new System.Drawing.Size(200, 27);
             this.comboWorker.TabIndex = 39;
@@ -53,7 +53,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(16, 117);
+            this.label4.Location = new System.Drawing.Point(12, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 19);
             this.label4.TabIndex = 38;
@@ -63,13 +63,6 @@
             // 
             this.comboTypeRev.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboTypeRev.FormattingEnabled = true;
-            this.comboTypeRev.Items.AddRange(new object[] {
-            "Аванс",
-            "Выручка",
-            "Изделия фирмы",
-            "Отпускные",
-            "Подработка",
-            "Свои изделия"});
             this.comboTypeRev.Location = new System.Drawing.Point(118, 44);
             this.comboTypeRev.Name = "comboTypeRev";
             this.comboTypeRev.Size = new System.Drawing.Size(200, 27);
@@ -124,7 +117,7 @@
             // btnAddEditRev
             // 
             this.btnAddEditRev.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAddEditRev.Location = new System.Drawing.Point(59, 158);
+            this.btnAddEditRev.Location = new System.Drawing.Point(57, 153);
             this.btnAddEditRev.Name = "btnAddEditRev";
             this.btnAddEditRev.Size = new System.Drawing.Size(121, 35);
             this.btnAddEditRev.TabIndex = 40;
@@ -134,7 +127,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCancel.Location = new System.Drawing.Point(186, 158);
+            this.btnCancel.Location = new System.Drawing.Point(184, 153);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 35);
             this.btnCancel.TabIndex = 40;
@@ -145,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 201);
+            this.ClientSize = new System.Drawing.Size(341, 199);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAddEditRev);
             this.Controls.Add(this.comboWorker);

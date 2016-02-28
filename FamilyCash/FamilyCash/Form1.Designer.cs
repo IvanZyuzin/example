@@ -29,19 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expencesToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.profitToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.revenueToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.графикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограмеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timerStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.revenueToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.графикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fiillexpprofToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new FamilyCash.TabControlWithoutTabs();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -55,12 +58,14 @@
             this.btnAddProf = new System.Windows.Forms.Button();
             this.btnEditProf = new System.Windows.Forms.Button();
             this.btnDelProf = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.data3 = new System.Windows.Forms.DataGridView();
             this.btnAddRev = new System.Windows.Forms.Button();
             this.btnEditRev = new System.Windows.Forms.Button();
             this.btnDelRev = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -76,12 +81,14 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data2)).BeginInit();
-            this.tabPage4.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data3)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -133,6 +140,20 @@
             this.profitToolStripMenu.Size = new System.Drawing.Size(202, 22);
             this.profitToolStripMenu.Text = "Доходы";
             // 
+            // revenueToolStripMenu
+            // 
+            this.revenueToolStripMenu.Name = "revenueToolStripMenu";
+            this.revenueToolStripMenu.Size = new System.Drawing.Size(202, 22);
+            this.revenueToolStripMenu.Text = "Ведомость по зарплате";
+            // 
+            // графикиToolStripMenuItem
+            // 
+            this.графикиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fiillexpprofToolStripMenu});
+            this.графикиToolStripMenuItem.Name = "графикиToolStripMenuItem";
+            this.графикиToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.графикиToolStripMenuItem.Text = "Графики";
+            // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -151,7 +172,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.timerStrip});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 277);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 427);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(668, 22);
             this.statusStrip1.TabIndex = 1;
@@ -164,28 +185,23 @@
             this.timerStrip.Size = new System.Drawing.Size(118, 17);
             this.timerStrip.Text = "toolStripStatusLabel1";
             // 
-            // revenueToolStripMenu
+            // fiillexpprofToolStripMenu
             // 
-            this.revenueToolStripMenu.Name = "revenueToolStripMenu";
-            this.revenueToolStripMenu.Size = new System.Drawing.Size(202, 22);
-            this.revenueToolStripMenu.Text = "Ведомость по зарплате";
-            // 
-            // графикиToolStripMenuItem
-            // 
-            this.графикиToolStripMenuItem.Name = "графикиToolStripMenuItem";
-            this.графикиToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.графикиToolStripMenuItem.Text = "Графики";
+            this.fiillexpprofToolStripMenu.Name = "fiillexpprofToolStripMenu";
+            this.fiillexpprofToolStripMenu.Size = new System.Drawing.Size(232, 22);
+            this.fiillexpprofToolStripMenu.Text = "Доходы и расходы за период";
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage4);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 24);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(668, 253);
+            this.tabControl.Size = new System.Drawing.Size(668, 403);
             this.tabControl.TabIndex = 2;
             // 
             // tabPage1
@@ -194,7 +210,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(660, 227);
+            this.tabPage1.Size = new System.Drawing.Size(660, 282);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -216,8 +232,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnDelExp);
             this.splitContainer1.Panel2.Controls.Add(this.btnAddExp);
             this.splitContainer1.Panel2.Controls.Add(this.btnEditExp);
-            this.splitContainer1.Size = new System.Drawing.Size(654, 221);
-            this.splitContainer1.SplitterDistance = 169;
+            this.splitContainer1.Size = new System.Drawing.Size(654, 276);
+            this.splitContainer1.SplitterDistance = 224;
             this.splitContainer1.TabIndex = 0;
             // 
             // data1
@@ -230,7 +246,7 @@
             this.data1.Name = "data1";
             this.data1.ReadOnly = true;
             this.data1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data1.Size = new System.Drawing.Size(654, 169);
+            this.data1.Size = new System.Drawing.Size(654, 224);
             this.data1.TabIndex = 0;
             // 
             // btnDelExp
@@ -275,7 +291,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(660, 227);
+            this.tabPage2.Size = new System.Drawing.Size(660, 282);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -297,8 +313,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnAddProf);
             this.splitContainer2.Panel2.Controls.Add(this.btnEditProf);
             this.splitContainer2.Panel2.Controls.Add(this.btnDelProf);
-            this.splitContainer2.Size = new System.Drawing.Size(654, 221);
-            this.splitContainer2.SplitterDistance = 169;
+            this.splitContainer2.Size = new System.Drawing.Size(654, 276);
+            this.splitContainer2.SplitterDistance = 224;
             this.splitContainer2.TabIndex = 0;
             // 
             // data2
@@ -311,7 +327,7 @@
             this.data2.Name = "data2";
             this.data2.ReadOnly = true;
             this.data2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data2.Size = new System.Drawing.Size(654, 169);
+            this.data2.Size = new System.Drawing.Size(654, 224);
             this.data2.TabIndex = 0;
             // 
             // btnAddProf
@@ -347,15 +363,15 @@
             this.btnDelProf.UseVisualStyleBackColor = true;
             this.btnDelProf.Click += new System.EventHandler(this.btnDelProf_Click);
             // 
-            // tabPage4
+            // tabPage3
             // 
-            this.tabPage4.Controls.Add(this.splitContainer3);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(660, 227);
-            this.tabPage4.TabIndex = 2;
-            this.tabPage4.Text = "tabPage3";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage3.Controls.Add(this.splitContainer3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(660, 282);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // splitContainer3
             // 
@@ -374,8 +390,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.btnAddRev);
             this.splitContainer3.Panel2.Controls.Add(this.btnEditRev);
             this.splitContainer3.Panel2.Controls.Add(this.btnDelRev);
-            this.splitContainer3.Size = new System.Drawing.Size(660, 227);
-            this.splitContainer3.SplitterDistance = 169;
+            this.splitContainer3.Size = new System.Drawing.Size(660, 282);
+            this.splitContainer3.SplitterDistance = 224;
             this.splitContainer3.TabIndex = 0;
             // 
             // data3
@@ -388,7 +404,7 @@
             this.data3.Name = "data3";
             this.data3.ReadOnly = true;
             this.data3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data3.Size = new System.Drawing.Size(660, 169);
+            this.data3.Size = new System.Drawing.Size(660, 224);
             this.data3.TabIndex = 0;
             // 
             // btnAddRev
@@ -424,18 +440,40 @@
             this.btnDelRev.UseVisualStyleBackColor = true;
             this.btnDelRev.Click += new System.EventHandler(this.btnDelRev_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.chart1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(660, 377);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            this.chart1.BackColor = System.Drawing.Color.LightGray;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(8, 3);
+            this.chart1.Name = "chart1";
+            this.chart1.Size = new System.Drawing.Size(482, 340);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 299);
+            this.ClientSize = new System.Drawing.Size(668, 449);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "FamilyCash - ведение семейного бюджета";
-            this.Activated += new System.EventHandler(this.Form1_Activated);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -453,12 +491,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.data2)).EndInit();
-            this.tabPage4.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.data3)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,7 +530,7 @@
         public System.Windows.Forms.Button btnAddExp;
         public System.Windows.Forms.Button btnEditExp;
         private TabControlWithoutTabs tabControl;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.DataGridView data3;
         private System.Windows.Forms.ToolStripMenuItem revenueToolStripMenu;
@@ -498,6 +538,9 @@
         public System.Windows.Forms.Button btnEditRev;
         public System.Windows.Forms.Button btnDelRev;
         private System.Windows.Forms.ToolStripMenuItem графикиToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.ToolStripMenuItem fiillexpprofToolStripMenu;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 
