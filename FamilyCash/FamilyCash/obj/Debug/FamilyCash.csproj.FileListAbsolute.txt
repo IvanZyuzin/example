@@ -14,3 +14,4 @@ C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.FormExp.res
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.FormProf.resources
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.csprojResolveAssemblyReference.cache
 C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.FormRev.resources
+C:\Users\Иван\Desktop\FamilyCash\FamilyCash\obj\Debug\FamilyCash.AboutBox.resources

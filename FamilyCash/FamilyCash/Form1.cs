@@ -24,40 +24,51 @@ namespace FamilyCash
             expencesToolStripMenu.Click += (sender, args) => { tabControl.SelectedIndex = 0; };
             profitToolStripMenu.Click += (sender, args) => { tabControl.SelectedIndex = 1; };
             revenueToolStripMenu.Click += (sender, args) => { tabControl.SelectedIndex = 2; };
-
+            //!!
+            FillComboBoxPerson();
+            //!!
+            comboPerson.SelectedIndex = 0;
+            comboPeriod.SelectedIndex = 0;
+            comboType.SelectedIndex = 0;
 
             fiillexpprofToolStripMenu.Click += (sender, args) =>
             {
                 tabControl.SelectedIndex = 3;
-                chart1.FillExpProfByMonths(2);
+                comboViewDiagram.SelectedIndex = 0;
             };
 
             filltypeExpToolStripMenu.Click += (sender, args) =>
               {
                   tabControl.SelectedIndex = 3;
-                  chart1.FillTypeExpencesByMonths(2);
+                  comboViewDiagram.SelectedIndex = 1;
               };
             fillprofpersonToolStripMenu.Click += (sender, args) =>
              {
                  tabControl.SelectedIndex = 3;
-                 chart1.ProfitByPersonByMonth("Николай", 3);
+                 comboViewDiagram.SelectedIndex = 2;
              };
             fillproffamilyToolStripMenu.Click += (sender, args) =>
             {
                 tabControl.SelectedIndex = 3;
-                chart1.ProfitByFamilyByMonths(2);
+                comboViewDiagram.SelectedIndex = 3;
             };
             
             fiilprofitfamilyToolStripMenu.Click += (sender, args) =>
             {
                 tabControl.SelectedIndex = 3;
-                chart1.FillProfitByMonth(2);
+                comboViewDiagram.SelectedIndex = 4;
             };
             expbyonetypeToolStripMenu.Click += (sender, args) =>
             {
                 tabControl.SelectedIndex = 3;
-                chart1.ExpByTypeByMonth(2, 5);
+                comboViewDiagram.SelectedIndex = 5;
             };
+
+            aboutboxToolStripMenu.Click += (sender, args) =>
+              {
+                  AboutBox form = new AboutBox();
+                  form.ShowDialog();
+              };
 
             tabControl.Selecting += UpdateData;
             Activated += UpdateData;
@@ -86,7 +97,7 @@ namespace FamilyCash
         {
             using (ModelContainer db = new ModelContainer())
             {
-                data1.DataSource = db.ExpenceSet.AsNoTracking().Select(x => new { x.Id, x.ExpDate, x.ExpDescription, x.TypeExpences.TypeExpDescription, x.Summa }).ToList();
+                data1.DataSource = db.ExpenceSet.AsNoTracking().Select(x => new { x.Id, x.ExpDate, x.ExpDescription, x.TypeExpences.TypeExpDescription, x.Summa }).OrderByDescending(x => x.ExpDate).ToList();
                 for (int i = 0; i < headers_expence.Length; i++)
                 {
                     data1.Columns[i].HeaderText = headers_expence[i];
@@ -98,7 +109,7 @@ namespace FamilyCash
         {
             using (ModelContainer db = new ModelContainer())
             {
-                data2.DataSource = db.ProfitSet.AsNoTracking().Select(x => new { x.Id, x.ProfDate, x.ProfDescription, x.SumEntrance, x.SumAdded, x.Persons.FirstName }).ToList();
+                data2.DataSource = db.ProfitSet.AsNoTracking().Select(x => new { x.Id, x.ProfDate, x.ProfDescription, x.SumEntrance, x.SumAdded, x.Persons.FirstName }).OrderByDescending(x=>x.ProfDate).ToList();
                 for (int i = 0; i < headers_profit.Length; i++)
                 {
                     data2.Columns[i].HeaderText = headers_profit[i];
@@ -115,6 +126,17 @@ namespace FamilyCash
                 {
                     data3.Columns[i].HeaderText = headers_revenue[i];
                 }
+            }
+        }
+
+        private void FillComboBoxPerson()
+        {
+            using (ModelContainer db = new ModelContainer())
+            {
+                var Names = db.PersonSet.AsNoTracking().Select(x => new { Name = x.FirstName }).Take(3).ToList();
+                comboPerson.DataSource = Names;
+                comboPerson.DisplayMember = "Name";
+                comboPerson.ValueMember = "Name";
             }
         }
 
@@ -245,6 +267,79 @@ namespace FamilyCash
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnBuild_Click(object sender, EventArgs e)
+        {
+            lblMember.Visible = false;
+            comboPerson.Visible = false;
+            lblTypeExp.Visible = false;
+            comboType.Visible = false;
+            string ResultDescription = string.Empty;
+            switch (comboViewDiagram.SelectedIndex)
+            {
+                case 0:
+                    chart1.ShowExpenceProfitByMonths(comboPeriod.SelectedIndex + 1, ref ResultDescription);
+                    break;
+                case 1:
+                    chart1.ShowExpencesByTypeByMonths(comboPeriod.SelectedIndex + 1, ref ResultDescription);
+                    break;
+                case 2:
+                    lblMember.Visible = true;
+                    comboPerson.Visible = true;
+                    chart1.ShowProfitByPersonByMonth(comboPerson.SelectedValue.ToString(), comboPeriod.SelectedIndex + 1, ref ResultDescription);
+                    break;
+                case 3:
+                    chart1.ShowFamilyProfitByMonths(comboPeriod.SelectedIndex + 1, ref ResultDescription);
+                    break;
+                case 4:
+                    chart1.ShowResultFamilyProfitByMonth(comboPeriod.SelectedIndex + 1, ref ResultDescription);
+                    break;
+                case 5:
+                    lblTypeExp.Visible = true;
+                    comboType.Visible = true;
+                    chart1.ShowExpenceByTypeByMonth(comboType.SelectedIndex + 1, comboPeriod.SelectedIndex + 1, ref ResultDescription);
+                    break;
+            }
+            lblDesc.Text = ResultDescription;
+        }
+
+        private void comboViewDiagram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboViewDiagram.SelectedIndex)
+            {
+                case 0:
+                case 1:
+                case 3:
+                case 4:
+                    lblMember.Visible = false;
+                    comboPerson.Visible = false;
+                    lblTypeExp.Visible = false;
+                    comboType.Visible = false;
+                    break;
+                case 2:
+                    lblMember.Visible = true;
+                    comboPerson.Visible = true;
+                    lblTypeExp.Visible = false;
+                    comboType.Visible = false;
+                    break;
+                case 5:
+                    lblMember.Visible = false;
+                    comboPerson.Visible = false;
+                    lblTypeExp.Visible = true;
+                    comboType.Visible = true;
+                    break;
+            }
+        }
+
+        private void btnResult_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedIndex = 4;
+        }
+
+        private void btnBackToGraphics_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedIndex = 3;
         }
     }
 }

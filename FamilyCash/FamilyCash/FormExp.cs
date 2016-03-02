@@ -23,7 +23,9 @@ namespace FamilyCash
             this.Number = Number;
             InitializeComponent();
             btnCancel.Click += (sender, args) => { Close(); };
-            ShowTypeExpence();
+            comboTypeExp.DataSource = DataFunctions.GetTypeExpencesDescription();
+            comboTypeExp.SelectedIndex = 0;
+            //ShowTypeExpence();
 
             if (AddOrEdit)
             {
